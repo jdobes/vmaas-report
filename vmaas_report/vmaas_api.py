@@ -1,4 +1,5 @@
 import os
+
 import requests
 
 VMAAS_SERVER_DEFAULT = "https://webapp-vmaas-stable.1b13.insights.openshiftapps.com"
@@ -22,7 +23,6 @@ class VmaasApi:
     
     def get_version(self):
         return self._vmaas_call("GET", "/api/v1/version")
-
-    def print_status(self):
-        print("VMAAS_SERVER: %s" % self.server)
-        print("Server version: %s" % self.get_version())
+    
+    def get_db_change(self):
+        return self._vmaas_call("GET", "/api/v1/dbchange")
