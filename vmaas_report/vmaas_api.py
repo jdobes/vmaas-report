@@ -1,4 +1,5 @@
 import os
+import json
 
 import requests
 
@@ -15,7 +16,7 @@ class VmaasApi:
         if method == "GET":
             result = requests.get("%s%s" % (self.server, endpoint))
         elif method == "POST":
-            result = requests.post("%s%s" % (self.server, endpoint), data=data)
+            result = requests.post("%s%s" % (self.server, endpoint), data=json.dumps(data))
         else:
             raise ValueError("Unknown method: %s" % method)
 
@@ -26,3 +27,9 @@ class VmaasApi:
     
     def get_db_change(self):
         return self._vmaas_call("GET", "/api/v1/dbchange")
+    
+    def get_updates(self, data):
+        return self._vmaas_call("POST", "/api/v2/updates", data=data)
+    
+    def get_errata(self, data):
+        return self._vmaas_call("POST", "/api/v1/errata", data=data)
