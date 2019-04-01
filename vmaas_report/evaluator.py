@@ -19,7 +19,10 @@ class Evaluator:
         print("  Repositories changed: %s" % str(db_change["repository_changes"]))
         print("  Last change: %s" % str(db_change["last_change"]))
         print("  Exported: %s" % str(db_change["exported"]))
-    
+
+    def print_request(self):
+        print(json.dumps(self._prepare_updates_request(), indent=4, sort_keys=True))
+
     def _prepare_updates_request(self):
         return {
             "package_list": self.rpm_backend.installed_packages,
