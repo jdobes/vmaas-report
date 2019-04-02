@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name="vmaas-report",
     description="A tool for getting vulnerabilities from VMaaS for given system package profile",
-    version="0.1.8",
+    version="0.1.9",
     license="MIT",
     author="Jan Dobes",
     author_email="jdobes@redhat.com",
